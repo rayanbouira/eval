@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="togglePanel(1)">Menu 1</a></li>
+      <li><a href="#" id="menu2" onclick="togglePanel(2)">Menu 2</a></li>
+      <li><a href="#" onclick="togglePanel(3)">Menu 3</a></li>
+      <li><a href="#" onclick="togglePanel(4)">Menu 4</a></li>
+      <li><a href="#" onclick="togglePanel(5)">Menu 5</a></li>
+    </ul>
+  </nav>
+
+  <div id="panel1" class="panel">
+    <table>
+      <tr>
+        <td><a href="#" id="link1">Lien1<img
+              src="43ee463b699804cb53fbd44cd890396ef8eb897953b2fc04aa91409143226018_product_card_v2_mobile_slider_639.jpg" /></a>
+        </td>
+        <td><a href="#" id="link2">Lien 2<img src="4457155.jpg" /></a></td>
+        <td><a href="#" id="link3">Lien 3<img src="template-jdg-81.jpg" /></a></td>
+      </tr>
+    </table>
+  </div>
+  <div id="panel2" class="panel">Contenu du panneau 2</div>
+  <form>
+    <label>Prénom:</label>
+    <input type="text" id="firstName">
+    <label>Nom:</label>
+    <input type="text" id="lastName">
+    <button type="button" onclick="displayTable()">Soumettre</button>
+  </form>
+  <table id="table" style="display:none;">
+    <thead>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+  </div>
+  <div id="panel3" class="panel">Contenu du panneau 3</div>
+  <div id="panel4" class="panel">Contenu du panneau 4</div>
+  <div id="panel5" class="panel">Contenu du panneau 5</div>
+
+  <script>
+
+
+
+    function displayTable() {
+      var firstName = document.getElementById("firstName").value;
+      var lastName = document.getElementById("lastName").value;
+      var tableBody = document.getElementById("tableBody");
+      var row = `<tr><td>${firstName}</td><td>${lastName}</td></tr>`;
+      tableBody.innerHTML = row;
+      document.getElementById("table").style.display = "block";
+    }
+
+    var panels = document.querySelectorAll('.panel');
+
+    var panels = document.querySelectorAll('.panel');
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].style.display = 'none';
+    }
+
+    function togglePanel(panelNumber) {
+      var panel = document.getElementById('panel' + panelNumber);
+      var isVisible = panel.style.display === 'block';
+      for (var i = 0; i < panels.length; i++) {
+        panels[i].style.display = 'none';
+      }
+      if (!isVisible) {
+        panel.style.display = 'block';
+      }
+    }
+  </script>
+
+  <style>
+    img {
+      max-width: 100px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background-color: #ddd;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      margin: 0 10px;
+    }
+
+    nav a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    table {
+      display: table;
+      width: 100%;
+    }
+  </style>
+</body>
+
+</html>
